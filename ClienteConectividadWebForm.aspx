@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClienteConectividadWebForm.aspx.cs" Inherits="UMTransporte.ClienteConectividadWebForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClienteConectividadWebForm.aspx.cs" Async="true" Inherits="UMTransporte.ClienteConectividadWebForm" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<?xml version="1.0" encoding="utf-8"?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -36,155 +37,156 @@
                     <asp:TableCell runat="server" Width="400" BorderColor="Gray" BorderWidth="1">
                         <asp:Label Font-Bold="true" runat="server" Text="ORIGEN"></asp:Label><br /><br />
                          <asp:Table runat="server">
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="230">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Calle:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="PCalleTextBox" Width="300" runat="server"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell Width="300">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Número:"/>
-                                                             <asp:TextBox ID="PNumeroTextBox" Width="60" runat="server"/>
-                                                       </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell>
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Block, Pasaje, Villa o Recinto:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="PBPVRTextBox" Text="" Width="300" runat="server"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:Label Font-Names="Calibri" runat="server" Font-Size="Smaller" Text="(Nombre y número si corresponde)"/>
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                </asp:Table>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="230">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Calle:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="PCalleTextBox" Width="300" runat="server"/>
+                                </asp:TableCell>
+                                <asp:TableCell Width="300">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Número:"/>
+                                        <asp:TextBox ID="PNumeroTextBox" Width="60" runat="server"/>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell>
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Block, Pasaje, Villa o Recinto:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="PBPVRTextBox" Text="" Width="300" runat="server"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:Label Font-Names="Calibri" runat="server" Font-Size="Smaller" Text="(Nombre y número si corresponde)"/>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                         </asp:Table>
                          <asp:Table runat="server">
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Region:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Código Postal:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="CPostalTextBox" Width="160" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                </asp:Table>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Region:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:DropDownList ID="xRegionOrigen" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="xCiudadOrigen" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="xComunaOrigen" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Código Postal:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="CPostalTextBox" Width="160" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
                     </asp:TableCell>
-                    <asp:TableCell runat="server" Width="50"  BorderColor="Gray" BorderWidth="1"></asp:TableCell>
+                    <asp:TableCell runat="server" Width="50"  BorderColor="Gray" BorderWidth="1">
+                    </asp:TableCell>
                     <asp:TableCell runat="server" Width="400" BorderColor="Gray" BorderWidth="1">
                         <asp:Label Font-Bold="true" runat="server" Text="DESTINO"></asp:Label><br /><br />
                          <asp:Table runat="server">
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="230">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Calle:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="TextBox1" Width="300" runat="server"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell Width="300">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Número:"/>
-                                                             <asp:TextBox ID="TextBox2" Width="60" runat="server"/>
-                                                       </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell>
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Block, Pasaje, Villa o Recinto:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="TextBox3" Text="" Width="300" runat="server"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:Label Font-Names="Calibri" runat="server" Font-Size="Smaller" Text="(Nombre y número si corresponde)"/>
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                </asp:Table>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="230">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Calle:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="TextBox1" Width="300" runat="server"/>
+                                </asp:TableCell>
+                                <asp:TableCell Width="300">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Número:"/>
+                                        <asp:TextBox ID="TextBox2" Width="60" runat="server"/>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell>
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Block, Pasaje, Villa o Recinto:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="TextBox3" Text="" Width="300" runat="server"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:Label Font-Names="Calibri" runat="server" Font-Size="Smaller" Text="(Nombre y número si corresponde)"/>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
                          <asp:Table runat="server">
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Region:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox Width="230" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                    <asp:TableRow runat="server">
-                                                        <asp:TableCell Width="20"/>
-                                                        <asp:TableCell Width="140">
-                                                            <asp:Label Font-Names="Calibri" runat="server" Text="Código Postal:"/>
-                                                        </asp:TableCell>
-                                                        <asp:TableCell>
-                                                            <asp:TextBox ID="TextBox4" Width="160" runat="server"/>
-                                                        </asp:TableCell >
-                                                        <asp:TableCell Width="300">
-                                                        </asp:TableCell>
-                                                    </asp:TableRow>
-                                                </asp:Table>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Region:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:DropDownList ID="xRegionDestino" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="xCiudadDestino" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="xComunaDestino" Width="230" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell Width="20"/>
+                                <asp:TableCell Width="140">
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Código Postal:"/>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="TextBox4" Width="160" runat="server"/>
+                                </asp:TableCell >
+                                <asp:TableCell Width="300">
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

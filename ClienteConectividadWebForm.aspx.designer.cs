@@ -51,6 +51,33 @@ namespace UMTransporte
         protected global::System.Web.UI.WebControls.TextBox PBPVRTextBox;
 
         /// <summary>
+        /// Control xRegionOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList xRegionOrigen;
+
+        /// <summary>
+        /// Control xCiudadOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xCiudadOrigen;
+
+        /// <summary>
+        /// Control xComunaOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xComunaOrigen;
+
+        /// <summary>
         /// Control CPostalTextBox.
         /// </summary>
         /// <remarks>
@@ -85,6 +112,33 @@ namespace UMTransporte
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
+
+        /// <summary>
+        /// Control xRegionDestino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList xRegionDestino;
+
+        /// <summary>
+        /// Control xCiudadDestino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xCiudadDestino;
+
+        /// <summary>
+        /// Control xComunaDestino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xComunaDestino;
 
         /// <summary>
         /// Control TextBox4.
