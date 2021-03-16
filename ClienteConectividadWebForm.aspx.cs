@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
+using System.IO;
+using System.Net;
 using UMTransporte.ServicioExternoRegionYComunas;
+using UMTransporte.App_LocalResources.Chilexpress.Region;
+
 
 namespace UMTransporte
 {
@@ -19,15 +19,18 @@ namespace UMTransporte
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             System.Diagnostics.Debug.WriteLine("prueba");
             this.regions = ListarTodasLasRegiones("PRUEBA WS 1", "b9d591ae8ef9d36bb7d4e18438d6114e");
+            this.SetCorreosRegions();
+            ListarRegionesChilexpress();
             this.SetCorreosRegions();
             //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
         }
 
         public void SetCorreosRegions()
         {
-            //Data Source
+            /*//Data Source
             this.xRegionOrigen.DataSource = this.regions;
             this.xRegionOrigen.DataValueField = "Identificador";
             this.xRegionOrigen.DataTextField = "Nombre";
@@ -44,10 +47,32 @@ namespace UMTransporte
             this.xRegionDestino.DataBind();
 
             System.Diagnostics.Debug.WriteLine(regions.Length);
+            */
         }
 
-        /* Add Service Reference namespace RegionesYComunas
-   using RegionesYComunas; */
+        /*public void SetChilexpressRegions(responseBody)
+        {
+            //Data Source
+            this.xRegionOrigen.DataSource = responseBody;
+            this.xRegionOrigen.DataValueField = "Identificador";
+            this.xRegionOrigen.DataTextField = "Nombre";
+
+            //Data Bind
+            this.xRegionOrigen.DataBind();
+
+            //Data Source
+            this.xRegionDestino.DataSource = responseBody;
+            this.xRegionDestino.DataValueField = "Identificador";
+            this.xRegionDestino.DataTextField = "Nombre";
+
+            //Data Bind
+            this.xRegionDestino.DataBind();
+
+            System.Diagnostics.Debug.WriteLine(regions.Length);
+        }*/
+
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+
         public RegionTO[] ListarTodasLasRegiones(string usuario, string contrasena)
         {
             try
@@ -62,25 +87,37 @@ namespace UMTransporte
             }
         }
 
-        public async Task<HttpResponseMessage> MostrarRegionesAsync()
+        private static void ListarRegionesChilexpress()
         {
+            var url = "https://testservices.wschilexpress.com/georeference/api/v1.0/regions";
+            System.Diagnostics.Debug.WriteLine(url);
+            var request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
             try
             {
-                HttpClient client = new HttpClient();
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        if (strReader == null) return;
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            string responseBody = objReader.ReadToEnd();
+                            // Do something with responseBody
 
-                client.DefaultRequestHeaders.Accept.Clear();
+                            Root regiones = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(responseBody);
 
-                Uri uri = new Uri("https://testservices.wschilexpress.com/georeference/api/v1.0/regions");
+                            System.Diagnostics.Debug.WriteLine(regiones.Regions.Count);
 
-                HttpResponseMessage response = await client.GetAsync(uri);
-
-                return response;
+                        }
+                    }
+                }
             }
-            catch (Exception e)
+            catch (WebException ex)
             {
-                System.Diagnostics.Debug.Write("Error Regiones" + e);
-
-                return new HttpResponseMessage();
+                Console.WriteLine("Error", ex);
             }
         }
 
