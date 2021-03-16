@@ -191,14 +191,15 @@
                 </asp:TableRow>
             </asp:Table>
         </div>
+
         <div>
             <asp:Table runat="server" Width="100%">
                 <asp:TableRow runat="server">
                     <asp:TableCell Text="ENVIO POR:" Width="200" HorizontalAlign="Center" runat="server">
                     </asp:TableCell>
                     <asp:TableCell runat="server">
-                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteChilexpressRadioButton" Text="Chilexpress" OnSelectedIndexChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />  
-                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteCorreosRadioButton" Text="Correos de Chile" OnSelectedIndexChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />  
+                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteChilexpressRadioButton" Text="Chilexpress" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />  
+                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteCorreosRadioButton" Text="Correos de Chile" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />  
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

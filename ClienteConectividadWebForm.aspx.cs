@@ -21,21 +21,6 @@ namespace UMTransporte
         public string userCorreos = "PRUEBA WS 1";
         public string pwdCorreos = "b9d591ae8ef9d36bb7d4e18438d6114e";
 
-        protected void EmpresaTransporteRadioButton_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //do whatever you want by calling the name of the radio id
-            //example
-
-            if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
-            {
-                ListarRegionesChilexpress();
-            }
-            else
-            {
-                ListarRegionesCorreos(userCorreos, pwdCorreos);
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -46,6 +31,20 @@ namespace UMTransporte
 
             this.SetCorreosRegions();
             //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
+        }
+
+        protected void EmpresaTransporteRadioButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("hola: " + this.EmpresaTransporteChilexpressRadioButton.Checked);
+            if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
+            {
+                SetChilexpressRegions();
+            }
+            else
+            {
+                SetCorreosRegions();
+            }
+            System.Diagnostics.Debug.WriteLine(this.EmpresaTransporteChilexpressRadioButton.Checked.ToString());
         }
 
         public void SetCorreosRegions()
@@ -66,29 +65,30 @@ namespace UMTransporte
             //Data Bind
             this.xRegionDestino.DataBind();
 
-            System.Diagnostics.Debug.WriteLine(regions.Length);
+            System.Diagnostics.Debug.WriteLine("regiones correos: " + this.regions.Length);
             
         }
 
         public void SetChilexpressRegions()
         {
+
             //Data Source
-            this.xRegionOrigen.DataSource = this.chilexpressRegions;
-            this.xRegionOrigen.DataValueField = "Identificador";
-            this.xRegionOrigen.DataTextField = "Nombre";
+            this.xRegionOrigen.DataSource = this.chilexpressRegions.Regions;
+            this.xRegionOrigen.DataValueField = "RegionId";
+            this.xRegionOrigen.DataTextField = "RegionName";
 
             //Data Bind
             this.xRegionOrigen.DataBind();
 
             //Data Source
-            this.xRegionDestino.DataSource = this.chilexpressRegions;
-            this.xRegionDestino.DataValueField = "Identificador";
-            this.xRegionDestino.DataTextField = "Nombre";
+            this.xRegionDestino.DataSource = this.chilexpressRegions.Regions;
+            this.xRegionDestino.DataValueField = "RegionId";
+            this.xRegionDestino.DataTextField = "RegionName";
 
             //Data Bind
             this.xRegionDestino.DataBind();
 
-            System.Diagnostics.Debug.WriteLine(regions.Length);
+            System.Diagnostics.Debug.WriteLine("regiones chilexpress: "+ this.chilexpressRegions.Regions.Count);
         }
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
