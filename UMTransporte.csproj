@@ -202,6 +202,7 @@
     <Compile Include="ClienteConectividadWebForm.aspx.designer.cs">
       <DependentUpon>ClienteConectividadWebForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\App_LocalResources\Chilexpress\Region.aspx.cs" />
     <Compile Include="Connected Services\ServicioExternoRegionYComunas\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
