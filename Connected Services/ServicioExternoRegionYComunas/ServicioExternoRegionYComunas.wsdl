@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="listarTodasLasRegiones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarTodasLasRegionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarTodasLasRegionesResult" type="tns:ArrayOfRegionTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRegionTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RegionTO" nillable="true" type="tns:RegionTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegionTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identificador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExtensionDataObject" />
+      <s:element name="listarComunasSegunRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigoRegion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarComunasSegunRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarComunasSegunRegionResult" type="tns:ArrayOfComunaTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfComunaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ComunaTO" nillable="true" type="tns:ComunaTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ComunaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Auxiliar1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Auxiliar2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Auxiliar3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Iata" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreComuna" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listarTodasLasComunas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarTodasLasComunasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarTodasLasComunasResult" type="tns:ArrayOfComunaTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="listarTodasLasRegionesSoapIn">
+    <wsdl:part name="parameters" element="tns:listarTodasLasRegiones" />
+  </wsdl:message>
+  <wsdl:message name="listarTodasLasRegionesSoapOut">
+    <wsdl:part name="parameters" element="tns:listarTodasLasRegionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarComunasSegunRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:listarComunasSegunRegion" />
+  </wsdl:message>
+  <wsdl:message name="listarComunasSegunRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:listarComunasSegunRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarTodasLasComunasSoapIn">
+    <wsdl:part name="parameters" element="tns:listarTodasLasComunas" />
+  </wsdl:message>
+  <wsdl:message name="listarTodasLasComunasSoapOut">
+    <wsdl:part name="parameters" element="tns:listarTodasLasComunasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioExternoRegionYComunasSoap">
+    <wsdl:operation name="listarTodasLasRegiones">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método web que permite obtener un listado de todas las regiones almacenadas en el repositorio de datos.</wsdl:documentation>
+      <wsdl:input message="tns:listarTodasLasRegionesSoapIn" />
+      <wsdl:output message="tns:listarTodasLasRegionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarComunasSegunRegion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método que permite obtener un listado con todas las comunas almacenadas en el repositorio de datos, según la región indicada por su identificador.</wsdl:documentation>
+      <wsdl:input message="tns:listarComunasSegunRegionSoapIn" />
+      <wsdl:output message="tns:listarComunasSegunRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarTodasLasComunas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Método web que permite obtener un listado de todas las comunas almacenadas en en el repositorio de datos.</wsdl:documentation>
+      <wsdl:input message="tns:listarTodasLasComunasSoapIn" />
+      <wsdl:output message="tns:listarTodasLasComunasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioExternoRegionYComunasSoap" type="tns:ServicioExternoRegionYComunasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarTodasLasRegiones">
+      <soap:operation soapAction="http://tempuri.org/listarTodasLasRegiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarComunasSegunRegion">
+      <soap:operation soapAction="http://tempuri.org/listarComunasSegunRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarTodasLasComunas">
+      <soap:operation soapAction="http://tempuri.org/listarTodasLasComunas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioExternoRegionYComunasSoap12" type="tns:ServicioExternoRegionYComunasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarTodasLasRegiones">
+      <soap12:operation soapAction="http://tempuri.org/listarTodasLasRegiones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarComunasSegunRegion">
+      <soap12:operation soapAction="http://tempuri.org/listarComunasSegunRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarTodasLasComunas">
+      <soap12:operation soapAction="http://tempuri.org/listarTodasLasComunas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioExternoRegionYComunas">
+    <wsdl:port name="ServicioExternoRegionYComunasSoap" binding="tns:ServicioExternoRegionYComunasSoap">
+      <soap:address location="http://apicert.correos.cl:8008/ServicioRegionYComunasExterno/cch/ws/distribucionGeografica/externo/implementacion/ServicioExternoRegionYComunas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioExternoRegionYComunasSoap12" binding="tns:ServicioExternoRegionYComunasSoap12">
+      <soap12:address location="http://apicert.correos.cl:8008/ServicioRegionYComunasExterno/cch/ws/distribucionGeografica/externo/implementacion/ServicioExternoRegionYComunas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

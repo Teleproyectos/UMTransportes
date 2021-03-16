@@ -46,7 +46,6 @@ C:\Users\Pablo\source\repos\UMTransporte\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Pablo\source\repos\UMTransporte\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Pablo\source\repos\UMTransporte\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Pablo\source\repos\UMTransporte\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\Pablo\source\repos\UMTransporte\obj\Debug\UMTransporte.csprojAssemblyReference.cache
 C:\Users\Pablo\source\repos\UMTransporte\obj\Debug\UMTransporte.csproj.CoreCompileInputs.cache
 C:\Users\Pablo\source\repos\UMTransporte\obj\Debug\UMTransporte.csproj.CopyComplete
 C:\Users\Pablo\source\repos\UMTransporte\obj\Debug\UMTransporte.dll
