@@ -16,21 +16,41 @@ namespace UMTransporte
         // PROD: http://b2b.correos.cl/ServicioRegionYComunasExterno/cch/ws/distribucionGeografica/externo/implementacion/ServicioExternoRegionYComunas.asmx?WSDL
 
         public RegionTO[] regions = null;
+        public Root chilexpressRegions = null;
+
+        public string userCorreos = "PRUEBA WS 1";
+        public string pwdCorreos = "b9d591ae8ef9d36bb7d4e18438d6114e";
+
+        protected void EmpresaTransporteRadioButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //do whatever you want by calling the name of the radio id
+            //example
+
+            if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
+            {
+                ListarRegionesChilexpress();
+            }
+            else
+            {
+                ListarRegionesCorreos(userCorreos, pwdCorreos);
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             System.Diagnostics.Debug.WriteLine("prueba");
-            this.regions = ListarTodasLasRegiones("PRUEBA WS 1", "b9d591ae8ef9d36bb7d4e18438d6114e");
-            this.SetCorreosRegions();
-            ListarRegionesChilexpress();
+
+            this.regions = ListarRegionesCorreos(userCorreos, pwdCorreos);
+            this.chilexpressRegions = ListarRegionesChilexpress();
+
             this.SetCorreosRegions();
             //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
         }
 
         public void SetCorreosRegions()
         {
-            /*//Data Source
+            //Data Source
             this.xRegionOrigen.DataSource = this.regions;
             this.xRegionOrigen.DataValueField = "Identificador";
             this.xRegionOrigen.DataTextField = "Nombre";
@@ -47,13 +67,13 @@ namespace UMTransporte
             this.xRegionDestino.DataBind();
 
             System.Diagnostics.Debug.WriteLine(regions.Length);
-            */
+            
         }
 
-        /*public void SetChilexpressRegions(responseBody)
+        public void SetChilexpressRegions()
         {
             //Data Source
-            this.xRegionOrigen.DataSource = responseBody;
+            this.xRegionOrigen.DataSource = this.chilexpressRegions;
             this.xRegionOrigen.DataValueField = "Identificador";
             this.xRegionOrigen.DataTextField = "Nombre";
 
@@ -61,7 +81,7 @@ namespace UMTransporte
             this.xRegionOrigen.DataBind();
 
             //Data Source
-            this.xRegionDestino.DataSource = responseBody;
+            this.xRegionDestino.DataSource = this.chilexpressRegions;
             this.xRegionDestino.DataValueField = "Identificador";
             this.xRegionDestino.DataTextField = "Nombre";
 
@@ -69,11 +89,11 @@ namespace UMTransporte
             this.xRegionDestino.DataBind();
 
             System.Diagnostics.Debug.WriteLine(regions.Length);
-        }*/
+        }
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
-        public RegionTO[] ListarTodasLasRegiones(string usuario, string contrasena)
+        public RegionTO[] ListarRegionesCorreos(string usuario, string contrasena)
         {
             try
             {
@@ -87,8 +107,10 @@ namespace UMTransporte
             }
         }
 
-        private static void ListarRegionesChilexpress()
+        public Root ListarRegionesChilexpress()
         {
+            Root regiones = null;
+
             var url = "https://testservices.wschilexpress.com/georeference/api/v1.0/regions";
             System.Diagnostics.Debug.WriteLine(url);
             var request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
@@ -101,16 +123,15 @@ namespace UMTransporte
                 {
                     using (Stream strReader = response.GetResponseStream())
                     {
-                        if (strReader == null) return;
+                        if (strReader == null) return regiones;
                         using (StreamReader objReader = new StreamReader(strReader))
                         {
                             string responseBody = objReader.ReadToEnd();
                             // Do something with responseBody
 
-                            Root regiones = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(responseBody);
+                            regiones = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(responseBody);
 
-                            System.Diagnostics.Debug.WriteLine(regiones.Regions.Count);
-
+                            System.Diagnostics.Debug.WriteLine(regiones.Regions);
                         }
                     }
                 }
@@ -119,6 +140,8 @@ namespace UMTransporte
             {
                 Console.WriteLine("Error", ex);
             }
+
+            return regiones;
         }
 
 
