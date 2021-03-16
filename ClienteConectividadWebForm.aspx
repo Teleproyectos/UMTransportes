@@ -78,21 +78,21 @@
                             <asp:TableRow runat="server">
                                 <asp:TableCell Width="20"/>
                                 <asp:TableCell Width="140">
-                                    <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="xCiudadOrigen" Width="230" runat="server"/>
-                                </asp:TableCell >
+                                    <asp:DropDownList ID="xComunaOrigen" Width="230" runat="server"/>
+                                </asp:TableCell>
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
                             </asp:TableRow>
                             <asp:TableRow runat="server">
                                 <asp:TableCell Width="20"/>
                                 <asp:TableCell Width="140">
-                                    <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
+                                    <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="xComunaOrigen" Width="230" runat="server"/>
+                                    <asp:TextBox ID="xCiudadOrigen" Width="230" runat="server"/>
                                 </asp:TableCell >
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
@@ -149,7 +149,7 @@
                                 </asp:TableCell>
                                 <asp:TableCell>
                                     <asp:DropDownList ID="xRegionDestino" Width="230" runat="server"/>
-                                </asp:TableCell >
+                                </asp:TableCell>
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
                             </asp:TableRow>
@@ -159,8 +159,8 @@
                                     <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="xCiudadDestino" Width="230" runat="server"/>
-                                </asp:TableCell >
+                                    <asp:DropDownList ID="xCiudadDestino" Width="230" runat="server"/>
+                                </asp:TableCell>
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
                             </asp:TableRow>
