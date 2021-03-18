@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using UMTransporte.ServicioExternoRegionYComunas;
 using UMTransporte.App_LocalResources.Chilexpress.Region;
-
+using System.Web.UI.WebControls;
 
 namespace UMTransporte
 {
@@ -17,25 +17,58 @@ namespace UMTransporte
 
         public RegionTO[] regions = null;
         public Root chilexpressRegions = null;
+        public ComunaTO[] communes = null;
+        public String regionSelected = null;
 
         public string userCorreos = "PRUEBA WS 1";
         public string pwdCorreos = "b9d591ae8ef9d36bb7d4e18438d6114e";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            System.Diagnostics.Debug.WriteLine("prueba");
+            if (!IsPostBack)
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                System.Diagnostics.Debug.WriteLine("prueba");
 
-            this.regions = ListarRegionesCorreos(userCorreos, pwdCorreos);
-            this.chilexpressRegions = ListarRegionesChilexpress();
+                this.ListarRegionesChilexpress();
+                this.SetCorreosRegions();
+                //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
+            }
+        }
 
-            this.SetCorreosRegions();
-            //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
+        protected void RegionDropdownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            System.Diagnostics.Debug.WriteLine("Obtener comunas: " + this.regionSelected);
+
+            if (this.EmpresaTransporteCorreosRadioButton.Checked == true)
+            {
+                DropDownList elementChanged = sender as DropDownList;
+                System.Diagnostics.Debug.WriteLine("ID Dropdown = " + elementChanged.ID);
+
+                this.communes = ListarComunasSegunRegion(userCorreos, pwdCorreos, elementChanged.SelectedValue);
+
+                System.Diagnostics.Debug.WriteLine("Comunas = "+this.communes.Length);
+                if (elementChanged.ID == "xRegionOrigen")
+                {
+                    this.xComunaOrigen.DataSource = this.communes;
+                    this.xComunaOrigen.DataValueField = "NombreComuna";
+                    this.xComunaOrigen.DataTextField = "NombreComuna";
+                    this.xComunaOrigen.DataBind();
+                }
+                else
+                {
+                    this.xComunaDestino.DataSource = this.communes;
+                    this.xComunaDestino.DataValueField = "NombreComuna";
+                    this.xComunaDestino.DataTextField = "NombreComuna";
+                    this.xComunaDestino.DataBind();
+                }
+            }
+
         }
 
         protected void EmpresaTransporteRadioButton_SelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("hola: " + this.EmpresaTransporteChilexpressRadioButton.Checked);
             if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
             {
                 SetChilexpressRegions();
@@ -44,11 +77,15 @@ namespace UMTransporte
             {
                 SetCorreosRegions();
             }
-            System.Diagnostics.Debug.WriteLine(this.EmpresaTransporteChilexpressRadioButton.Checked.ToString());
         }
 
         public void SetCorreosRegions()
         {
+            this.regions = ListarRegionesCorreos(userCorreos, pwdCorreos);
+
+            this.xComunaDestinoContainer.Visible = true;
+            this.xComunaOrigenContainer.Visible = true;
+
             //Data Source
             this.xRegionOrigen.DataSource = this.regions;
             this.xRegionOrigen.DataValueField = "Identificador";
@@ -65,12 +102,16 @@ namespace UMTransporte
             //Data Bind
             this.xRegionDestino.DataBind();
 
-            System.Diagnostics.Debug.WriteLine("regiones correos: " + this.regions.Length);
-            
+            this.regionSelected = "correos";
+
         }
 
         public void SetChilexpressRegions()
         {
+            this.chilexpressRegions = ListarRegionesChilexpress();
+
+            this.xComunaDestinoContainer.Visible = false;
+            this.xComunaOrigenContainer.Visible = false;
 
             //Data Source
             this.xRegionOrigen.DataSource = this.chilexpressRegions.Regions;
@@ -88,7 +129,9 @@ namespace UMTransporte
             //Data Bind
             this.xRegionDestino.DataBind();
 
-            System.Diagnostics.Debug.WriteLine("regiones chilexpress: "+ this.chilexpressRegions.Regions.Count);
+            this.regionSelected = "chilexpress";
+
+            System.Diagnostics.Debug.WriteLine("regiones chilexpress: " + this.chilexpressRegions.Regions.Count);
         }
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -142,6 +185,21 @@ namespace UMTransporte
             }
 
             return regiones;
+        }
+
+        public ComunaTO[] ListarComunasSegunRegion(string usuario, string contrasena, string codigoRegion)
+        {
+            ComunaTO[] comunas;
+            try
+            {
+                var client = new ServicioExternoRegionYComunasSoapClient();
+                comunas = client.listarComunasSegunRegion(usuario, contrasena, codigoRegion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrio un error intentando obtener las comunas según región.", ex);
+            }
+            return comunas;
         }
 
 
