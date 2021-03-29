@@ -215,13 +215,25 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
+            <asp:Table runat="server" Width="100%">
+                <asp:TableRow runat="server">
+                    <asp:TableCell Text="TIPO DE ENVIO:" Width="200" HorizontalAlign="Center" runat="server">
+                    </asp:TableCell>
+                    <asp:TableCell runat="server">
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoPrioritarioRadioButton" Checked="True" Text="Prioritario" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExpressRadioButton" Text="Express" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExtendidoRadioButton" Text="Extendido" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExtremoRadioButton" Text="Extremo" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
         </div>
         <div>
             <asp:Table runat="server" Height="50" Width="100%">
                 <asp:TableRow runat="server">
                     <asp:TableCell Width="200" HorizontalAlign="Left" runat="server">
                         <asp:Label Font-Bold="true" Text="VALOR DEL TRANSPORTE:  $ " runat="server"></asp:Label>
-                            <asp:TextBox runat="server"></asp:TextBox>
+                            <asp:TextBox ID="xValor" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
