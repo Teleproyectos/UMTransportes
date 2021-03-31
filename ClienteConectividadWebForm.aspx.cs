@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.Collections;
 using Newtonsoft.Json;
+using UMTransporte.ExternoTarificacion;
 
 namespace UMTransporte
 {
@@ -17,8 +18,14 @@ namespace UMTransporte
         /**
          * Apis
          **/
+
+        /* Consultar regiones y comunas */
         // CERT:_http://apicert.correos.cl:8008/ServicioRegionYComunasExterno/cch/ws/distribucionGeografica/externo/implementacion/ServicioExternoRegionYComunas.asmx?WSDL
         // PROD: http://b2b.correos.cl/ServicioRegionYComunasExterno/cch/ws/distribucionGeografica/externo/implementacion/ServicioExternoRegionYComunas.asmx?WSDL
+
+        /* Consultar coberturas */
+        // CERT: http://apicert.correos.cl:8008/ServicioTarificacionCEPEmpresasExterno/cch/ws/tarificacionCEP/externo/implementacion/ExternoTarificacion.asmx?WSDL
+        // PROD: http://b2b.correos.cl/ServicioTarificacionCEPEmpresasExterno/cch/ws/tarificacionCEP/externo/implementacion/ExternoTarificacion.asmx?WSDL
 
         public RegionTO[] regions = null;
         public Root chilexpressRegions = null;
@@ -97,15 +104,15 @@ namespace UMTransporte
 
         protected void ComunaDropdownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
+            if (this.xComunaOrigen.SelectedValue != "" && this.xComunaDestino.SelectedValue != "")
             {
-                if(this.xComunaOrigen.SelectedValue != "" || this.xComunaDestino.SelectedValue != "")
+                if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
                 {
                     CalcularEnvioChx();
+                } 
+                else if (this.EmpresaTransporteCorreosRadioButton.Checked == true){
+                    ConsultaCobertura();
                 }
-            }
-            else if (this.EmpresaTransporteCorreosRadioButton.Checked == true)
-            {
             }
         }
 
@@ -394,6 +401,42 @@ namespace UMTransporte
             return chilexpressCotizacion;
         }
 
+
+        /* Add Service Reference namespace Tarificacion
+   using Tarificacion; */
+        public ServicioTO[] ConsultaCobertura()
+        {
+            try
+            {
+                string usuario = this.userCorreos;
+                string contrasena = this.pwdCorreos;
+
+                float coberturaVolumen = ( float.Parse(this.xAlto.Text) * float.Parse(this.xAncho.Text) * float.Parse(this.xLargo.Text) ) / 1000000;
+                var cobertura = new CoberturaTO
+                {
+                    ComunaRemitente = this.xComunaOrigen.SelectedValue,
+                    ComunaDestino = this.xComunaDestino.SelectedValue,
+                    ImporteValorAsegurado = "0",
+                    ImporteReembolso = "0",
+                    NumeroTotalPieza = "1",
+                    Kilos = this.xPeso.Text, // Debe utilizar separador decimal "."
+                    Volumen = coberturaVolumen.ToString(),
+                    TipoPortes = "P",
+                    PaisDestinatario = "056",
+                    PaisRemitente = "056"
+                };
+                var client = new ExternoTarificacionSoapClient();
+                ServicioTO[] servicios = client.consultaCobertura(usuario, contrasena, cobertura);
+
+                this.xValor.Text = servicios[0].TotalTasacion.Total;
+
+                return servicios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrio un error intentando obtener las coberturas.", ex);
+            }
+        }
 
     }
 }

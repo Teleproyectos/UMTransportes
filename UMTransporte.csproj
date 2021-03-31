@@ -110,9 +110,31 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="ClienteConectividadWebForm.aspx" />
+    <None Include="Connected Services\ExternoTarificacion\ExternoTarificacion.wsdl" />
+    <Content Include="Connected Services\ExternoTarificacion\UMTransporte.ExternoTarificacion.consultaCoberturaPorProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ExternoTarificacion\UMTransporte.ExternoTarificacion.consultaCoberturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ExternoTarificacion\UMTransporte.ExternoTarificacion.consultaProductosPorClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ExternoTarificacion\UMTransporte.ExternoTarificacion.ProductoTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ExternoTarificacion\UMTransporte.ExternoTarificacion.ServicioTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioExternoRegionYComunas\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioExternoRegionYComunas\configuration.svcinfo" />
     <None Include="Connected Services\ServicioExternoRegionYComunas\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ExternoTarificacion\configuration91.svcinfo" />
+    <None Include="Connected Services\ExternoTarificacion\configuration.svcinfo" />
+    <None Include="Connected Services\ExternoTarificacion\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -205,6 +227,11 @@
     <Compile Include="Connected Services\App_LocalResources\Chilexpress\Comuna.aspx.cs" />
     <Compile Include="Connected Services\App_LocalResources\Chilexpress\Cotizacion.aspx.cs" />
     <Compile Include="Connected Services\App_LocalResources\Chilexpress\Region.aspx.cs" />
+    <Compile Include="Connected Services\ExternoTarificacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServicioExternoRegionYComunas\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,6 +296,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ExternoTarificacion\" />
     <WCFMetadataStorage Include="Connected Services\ServicioExternoRegionYComunas\" />
   </ItemGroup>
   <PropertyGroup>

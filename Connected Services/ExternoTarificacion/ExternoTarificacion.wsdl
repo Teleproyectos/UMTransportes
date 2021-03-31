@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="consultaProductosPorCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultaProductosPorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultaProductosPorClienteResult" type="tns:ArrayOfProductoTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductoTO" nillable="true" type="tns:ProductoTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoServicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExtensionDataObject" />
+      <s:element name="consultaCobertura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consultaCobertura" type="tns:CoberturaTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CoberturaTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoPostalDestinatario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoPostalRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComunaDestino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComunaRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImporteReembolso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImporteValorAsegurado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kilos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroTotalPieza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaisDestinatario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaisRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPortes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volumen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultaCoberturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultaCoberturaResult" type="tns:ArrayOfServicioTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServicioTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServicioTO" nillable="true" type="tns:ServicioTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServicioTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoServicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConceptosTasacion" type="tns:ArrayOfConceptoTasacionTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalTasacion" type="tns:TotalTasacionTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConceptoTasacionTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConceptoTasacionTO" nillable="true" type="tns:ConceptoTasacionTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConceptoTasacionTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Base" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Concepto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Impuesto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Portes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TotalTasacionTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConceptoTotal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Total" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultaCoberturaPorProducto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consultaCobertura" type="tns:CoberturaProductoTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CoberturaProductoTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoPostalDestinatario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoPostalRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoServicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComunaDestino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComunaRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImporteReembolso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImporteValorAsegurado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kilos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroTotalPieza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaisDestinatario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaisRemitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPortes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volumen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultaCoberturaPorProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultaCoberturaPorProductoResult" type="tns:ServicioTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="consultaProductosPorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:consultaProductosPorCliente" />
+  </wsdl:message>
+  <wsdl:message name="consultaProductosPorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:consultaProductosPorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaCoberturaSoapIn">
+    <wsdl:part name="parameters" element="tns:consultaCobertura" />
+  </wsdl:message>
+  <wsdl:message name="consultaCoberturaSoapOut">
+    <wsdl:part name="parameters" element="tns:consultaCoberturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaCoberturaPorProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:consultaCoberturaPorProducto" />
+  </wsdl:message>
+  <wsdl:message name="consultaCoberturaPorProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:consultaCoberturaPorProductoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExternoTarificacionSoap">
+    <wsdl:operation name="consultaProductosPorCliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio web consulta productos por cliente.</wsdl:documentation>
+      <wsdl:input message="tns:consultaProductosPorClienteSoapIn" />
+      <wsdl:output message="tns:consultaProductosPorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaCobertura">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo web que permite obtener servicios de acuerdo a una cobertura.</wsdl:documentation>
+      <wsdl:input message="tns:consultaCoberturaSoapIn" />
+      <wsdl:output message="tns:consultaCoberturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaCoberturaPorProducto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo web que permite obtener servicio de acuerdo a una cobertura.</wsdl:documentation>
+      <wsdl:input message="tns:consultaCoberturaPorProductoSoapIn" />
+      <wsdl:output message="tns:consultaCoberturaPorProductoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExternoTarificacionSoap" type="tns:ExternoTarificacionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaProductosPorCliente">
+      <soap:operation soapAction="http://tempuri.org/consultaProductosPorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCobertura">
+      <soap:operation soapAction="http://tempuri.org/consultaCobertura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCoberturaPorProducto">
+      <soap:operation soapAction="http://tempuri.org/consultaCoberturaPorProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExternoTarificacionSoap12" type="tns:ExternoTarificacionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaProductosPorCliente">
+      <soap12:operation soapAction="http://tempuri.org/consultaProductosPorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCobertura">
+      <soap12:operation soapAction="http://tempuri.org/consultaCobertura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCoberturaPorProducto">
+      <soap12:operation soapAction="http://tempuri.org/consultaCoberturaPorProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExternoTarificacion">
+    <wsdl:port name="ExternoTarificacionSoap" binding="tns:ExternoTarificacionSoap">
+      <soap:address location="http://apicert.correos.cl:8008/ServicioTarificacionCEPEmpresasExterno/cch/ws/tarificacionCEP/externo/implementacion/ExternoTarificacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExternoTarificacionSoap12" binding="tns:ExternoTarificacionSoap12">
+      <soap12:address location="http://apicert.correos.cl:8008/ServicioTarificacionCEPEmpresasExterno/cch/ws/tarificacionCEP/externo/implementacion/ExternoTarificacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
