@@ -98,8 +98,8 @@ C:\Users\Felipe\source\repos\UMTransportes\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Felipe\source\repos\UMTransportes\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Felipe\source\repos\UMTransportes\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Felipe\source\repos\UMTransportes\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.csprojAssemblyReference.cache
 C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.csproj.CoreCompileInputs.cache
 C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.csproj.CopyComplete
 C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.dll
 C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.pdb
+C:\Users\Felipe\source\repos\UMTransportes\obj\Debug\UMTransporte.csprojAssemblyReference.cache
