@@ -33,6 +33,60 @@ namespace UMTransporte
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Control xLargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xLargo;
+
+        /// <summary>
+        /// Control xAncho.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xAncho;
+
+        /// <summary>
+        /// Control xAlto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xAlto;
+
+        /// <summary>
+        /// Control xPeso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xPeso;
+
+        /// <summary>
+        /// Control EmpresaTransporteChilexpressRadioButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton EmpresaTransporteChilexpressRadioButton;
+
+        /// <summary>
+        /// Control EmpresaTransporteCorreosRadioButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton EmpresaTransporteCorreosRadioButton;
+
+        /// <summary>
         /// Control PCalleTextBox.
         /// </summary>
         /// <remarks>
@@ -105,15 +159,6 @@ namespace UMTransporte
         protected global::System.Web.UI.WebControls.DropDownList xComunaOrigen;
 
         /// <summary>
-        /// Control xCiudadOrigen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox xCiudadOrigen;
-
-        /// <summary>
         /// Control CPostalTextBox.
         /// </summary>
         /// <remarks>
@@ -159,15 +204,6 @@ namespace UMTransporte
         protected global::System.Web.UI.WebControls.DropDownList xRegionDestino;
 
         /// <summary>
-        /// Control xCiudadDestino.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList xCiudadDestino;
-
-        /// <summary>
         /// Control xComunaDestinoContainer.
         /// </summary>
         /// <remarks>
@@ -195,22 +231,49 @@ namespace UMTransporte
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// Control EmpresaTransporteChilexpressRadioButton.
+        /// Control ChilexpressTipoPrioritarioRadioButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton EmpresaTransporteChilexpressRadioButton;
+        protected global::System.Web.UI.WebControls.RadioButton ChilexpressTipoPrioritarioRadioButton;
 
         /// <summary>
-        /// Control EmpresaTransporteCorreosRadioButton.
+        /// Control ChilexpressTipoExpressRadioButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton EmpresaTransporteCorreosRadioButton;
+        protected global::System.Web.UI.WebControls.RadioButton ChilexpressTipoExpressRadioButton;
+
+        /// <summary>
+        /// Control ChilexpressTipoExtendidoRadioButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton ChilexpressTipoExtendidoRadioButton;
+
+        /// <summary>
+        /// Control ChilexpressTipoExtremoRadioButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton ChilexpressTipoExtremoRadioButton;
+
+        /// <summary>
+        /// Control xValor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox xValor;
 
         /// <summary>
         /// Control ReporteOperacionTextBox.

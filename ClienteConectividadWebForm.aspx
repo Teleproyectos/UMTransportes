@@ -18,17 +18,27 @@
                     <asp:TableCell VerticalAlign="Top" runat="server">
                         <asp:Label Font-Bold="true" Text="DATOS DEL PAQUETE:" runat="server"></asp:Label><br /><br />
                         <asp:Literal Text="Largo:" runat="server"></asp:Literal>
-                        <asp:TextBox Width="100" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="xLargo" Width="100" runat="server"></asp:TextBox>
                         <asp:Literal Text="centimetros" runat="server"></asp:Literal><br />
                         <asp:Literal Text="Ancho:" runat="server"></asp:Literal>
-                        <asp:TextBox Width="100" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="xAncho" Width="100" runat="server"></asp:TextBox>
                         <asp:Literal Text="centimetros" runat="server"></asp:Literal><br />
                         <asp:Literal Text="Alto:" runat="server"></asp:Literal>
-                        <asp:TextBox Width="100" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="xAlto" Width="100" runat="server"></asp:TextBox>
                         <asp:Literal Text="centimetros" runat="server"></asp:Literal><br /><br />
                         <asp:Literal Text="Peso:" runat="server"></asp:Literal>
-                        <asp:TextBox Width="50" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="xPeso" Width="50" runat="server"></asp:TextBox>
                         <asp:Literal Text="Kg" runat="server"></asp:Literal><br />
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <asp:Table runat="server" Width="100%">
+                <asp:TableRow runat="server">
+                    <asp:TableCell Text="ENVIO POR:" Width="200" HorizontalAlign="Center" runat="server">
+                    </asp:TableCell>
+                    <asp:TableCell runat="server">
+                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteChilexpressRadioButton" Text="Chilexpress" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteCorreosRadioButton" Text="Correos de Chile" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
@@ -90,20 +100,9 @@
                                 <asp:TableCell runat="server">
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" EnableViewState="true">
                                         <ContentTemplate>
-                                            <asp:DropDownList ID="xComunaOrigen" Width="230" runat="server" />
+                                            <asp:DropDownList ID="xComunaOrigen" OnSelectedIndexChanged="ComunaDropdownList_SelectedIndexChanged" Width="230" runat="server" AutoPostBack="True" />
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
-                                </asp:TableCell>
-                                <asp:TableCell Width="300">
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell Width="20" />
-                                <asp:TableCell Width="140">
-                                            <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
-                                </asp:TableCell>
-                                <asp:TableCell runat="server">
-                                    <asp:TextBox ID="xCiudadOrigen" Width="230" runat="server" />
                                 </asp:TableCell>
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
@@ -165,24 +164,13 @@
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
                             </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell Width="20" />
-                                <asp:TableCell Width="140">
-                                            <asp:Label Font-Names="Calibri" runat="server" Text="Ciudad:"/>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:DropDownList ID="xCiudadDestino" Width="230" runat="server" />
-                                </asp:TableCell>
-                                <asp:TableCell Width="300">
-                                </asp:TableCell>
-                            </asp:TableRow>
                             <asp:TableRow ID="xComunaDestinoContainer" runat="server">
                                 <asp:TableCell Width="20" />
                                 <asp:TableCell Width="140">
                                             <asp:Label Font-Names="Calibri" runat="server" Text="Comuna:"/>
                                 </asp:TableCell>
                                 <asp:TableCell runat="server">
-                                    <asp:DropDownList ID="xComunaDestino" Width="230" runat="server" />
+                                    <asp:DropDownList ID="xComunaDestino" OnSelectedIndexChanged="ComunaDropdownList_SelectedIndexChanged" Width="230" runat="server" AutoPostBack="True" />
                                 </asp:TableCell>
                                 <asp:TableCell Width="300">
                                 </asp:TableCell>
@@ -207,11 +195,13 @@
         <div>
             <asp:Table runat="server" Width="100%">
                 <asp:TableRow runat="server">
-                    <asp:TableCell Text="ENVIO POR:" Width="200" HorizontalAlign="Center" runat="server">
+                    <asp:TableCell Text="TIPO DE ENVIO:" Width="200" HorizontalAlign="Center" runat="server">
                     </asp:TableCell>
                     <asp:TableCell runat="server">
-                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteChilexpressRadioButton" Text="Chilexpress" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
-                        <asp:RadioButton GroupName="TransporteRadioButton" ID="EmpresaTransporteCorreosRadioButton" Checked="True" Text="Correos de Chile" OnCheckedChanged="EmpresaTransporteRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoPrioritarioRadioButton" Text="Prioritario" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExpressRadioButton" Text="Express" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExtendidoRadioButton" Text="Extendido" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
+                        <asp:RadioButton GroupName="TipoEnvioRadioButton" ID="ChilexpressTipoExtremoRadioButton" Text="Extremo" OnCheckedChanged="TipoEnvioChilexpressRadioButton_SelectedIndexChanged" Font-Bold="true" CellSpacing="40" RepeatDirection="Horizontal" runat="server" AutoPostBack="True" />
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
@@ -221,7 +211,7 @@
                 <asp:TableRow runat="server">
                     <asp:TableCell Width="200" HorizontalAlign="Left" runat="server">
                         <asp:Label Font-Bold="true" Text="VALOR DEL TRANSPORTE:  $ " runat="server"></asp:Label>
-                            <asp:TextBox runat="server"></asp:TextBox>
+                            <asp:TextBox ID="xValor" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
