@@ -37,10 +37,12 @@ namespace UMTransporte
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+                this.ChilexpressTipoPrioritarioRadioButton.Visible = false;
+                this.ChilexpressTipoExpressRadioButton.Visible = false;
+                this.ChilexpressTipoExtremoRadioButton.Visible = false;
+                this.ChilexpressTipoExtendidoRadioButton.Visible = false;
                 this.ListarRegionesChilexpress();
                 this.SetCorreosRegions();
-                
-                //RegisterAsyncTask(new PageAsyncTask(MostrarRegionesAsync));
             }
         }
 
@@ -81,7 +83,6 @@ namespace UMTransporte
                     this.xComunaOrigen.DataValueField = "countyCode";
                     this.xComunaOrigen.DataTextField = "countyName";
                     this.xComunaOrigen.DataBind();
-                    CalcularEnvioChx();
                 }
                 else
                 {
@@ -89,10 +90,23 @@ namespace UMTransporte
                     this.xComunaDestino.DataValueField = "countyCode";
                     this.xComunaDestino.DataTextField = "countyName";
                     this.xComunaDestino.DataBind();
-                    CalcularEnvioChx();
                 }
             }
 
+        }
+
+        protected void ComunaDropdownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
+            {
+                if(this.xComunaOrigen.SelectedValue != "" || this.xComunaDestino.SelectedValue != "")
+                {
+                    CalcularEnvioChx();
+                }
+            }
+            else if (this.EmpresaTransporteCorreosRadioButton.Checked == true)
+            {
+            }
         }
 
         protected void EmpresaTransporteRadioButton_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,7 +114,6 @@ namespace UMTransporte
             if (this.EmpresaTransporteChilexpressRadioButton.Checked == true)
             {
                 SetChilexpressRegions();
-                CalcularEnvioChx();
             }
             else
             {
@@ -292,22 +305,23 @@ namespace UMTransporte
 
         public Envio CalcularEnvioChx()
         {
-
             this.ChilexpressTipoPrioritarioRadioButton.Visible = false;
             this.ChilexpressTipoExpressRadioButton.Visible = false;
             this.ChilexpressTipoExtremoRadioButton.Visible = false;
             this.ChilexpressTipoExtendidoRadioButton.Visible = false;
 
+            System.Diagnostics.Debug.WriteLine(this.xComunaDestino.SelectedValue);
+
             Envio chilexpressCotizacion = new Envio
             {
-                OriginCountyCode = "STGO",
-                DestinationCountyCode = "PROV",
+                OriginCountyCode = this.xComunaOrigen.SelectedValue,
+                DestinationCountyCode = this.xComunaDestino.SelectedValue,
                 Package = new Package
                 {
-                    Weight = "16",
-                    Height = "1",
-                    Length = "1",
-                    Width = "1"
+                    Weight = this.xPeso.Text,
+                    Height = this.xAlto.Text,
+                    Length = this.xLargo.Text,
+                    Width = this.xAncho.Text
                 },
                 ProductType = 3,
                 ContentType = 1,
